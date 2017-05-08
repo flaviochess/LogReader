@@ -34,6 +34,7 @@ public class LogController {
             model.addAttribute("message", "Arquivo " + log.getName() + " enviado com sucesso");
             service.saveLogWebHook(log);
             model.addAttribute("urlsReport", service.getTopUrls(3));
+            model.addAttribute("codesReport", service.getStatusCodeReport());
         } catch (Exception e) {
             model.addAttribute("message", "Ocorreu um erro ao subir o arquivo");
         }

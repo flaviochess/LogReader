@@ -28,8 +28,22 @@
                 </dt>
             </dl>
         </div>
-        <div th:if="${#lists.isEmpty(urlsReport)}">
+        <div th:if="${#lists.isEmpty(codesReport)}">
             <p>...</p>
         </div>
+        
+        <h3>Codes Report</h3>
+        <div th:unless="${#lists.isEmpty(codesReport)}">
+            <dl th:each="row : ${codesReport}">
+                <dt>
+                    <span th:text="${row.value}">Status Code</span> - <span
+                        th:text="${row.count}">Count</span>
+                </dt>
+            </dl>
+        </div>
+        <div th:if="${#lists.isEmpty(codesReport)}">
+            <p>...</p>
+        </div>
+        
     </body>
 </html>

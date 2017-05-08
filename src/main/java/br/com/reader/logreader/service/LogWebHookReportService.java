@@ -36,4 +36,8 @@ public class LogWebHookReportService {
         return reports;
 
     }
+    
+    public List<LogWebHookCountReport> getStatusCodeReport() {
+        return repository.findCodeCount();
+    }
 }

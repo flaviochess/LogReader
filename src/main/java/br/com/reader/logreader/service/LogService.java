@@ -52,4 +52,10 @@ public class LogService {
         
         return new ArrayList();
     }
+    
+    public List<LogWebHookCountReport> getStatusCodeReport() {
+        
+        return logWebHookReport.getStatusCodeReport();
+    }
+    
 }
