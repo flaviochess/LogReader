@@ -1,6 +1,6 @@
 package br.com.reader.logreader.webhook;
 
-import br.com.reader.logreader.log.WebHook;
+import br.com.reader.logreader.entity.LogWebHook;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -18,11 +18,11 @@ public class WebHookController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String listaTeste(Model model) {
-        WebHook webHook = new WebHook();
+        LogWebHook webHook = new LogWebHook();
         webHook.setUrl("https://google.com");
         webHook.setCode(200);
 
-        List<WebHook> results = Collections.singletonList(webHook);
+        List<LogWebHook> results = Collections.singletonList(webHook);
 
         model.addAttribute("report", results);
 

@@ -21,6 +21,10 @@ public class LogWebHookSaveService {
     }
 
     public void save(List<LogWebHook> logWebHooks) {
+        for (LogWebHook logWebHook : logWebHooks) {
+            System.out.println(logWebHook);
+        }
+        
         repository.save(logWebHooks);
     }
 

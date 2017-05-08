@@ -13,6 +13,9 @@ import javax.persistence.Id;
 @Entity
 public class LogWebHook {
 
+    public final static String URL_FIELD = "url";
+    public final static String CODE_FIELD = "code";
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -68,6 +71,11 @@ public class LogWebHook {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "LogWebHook{" + "url=" + url + ", code=" + code + '}';
     }
 
 }
