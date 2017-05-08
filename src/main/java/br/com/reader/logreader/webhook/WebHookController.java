@@ -20,7 +20,7 @@ public class WebHookController {
     public String listaTeste(Model model) {
         LogWebHook webHook = new LogWebHook();
         webHook.setUrl("https://google.com");
-        webHook.setCode(200);
+        webHook.setCode("200");
 
         List<LogWebHook> results = Collections.singletonList(webHook);
 

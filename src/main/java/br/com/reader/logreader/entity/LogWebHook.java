@@ -22,7 +22,7 @@ public class LogWebHook {
 
     private String url;
 
-    private Integer code;
+    private String code;
 
     public Long getId() {
         return id;
@@ -40,11 +40,11 @@ public class LogWebHook {
         this.url = url;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

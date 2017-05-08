@@ -6,6 +6,8 @@ import br.com.reader.logreader.processor.LogFileEnum;
 import br.com.reader.logreader.processor.LogProcessor;
 import br.com.reader.logreader.processor.LogProcessorFactory;
 import br.com.reader.logreader.adapter.LogWebHookAdapter;
+import br.com.reader.logreader.entity.LogWebHookCountReport;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,13 @@ public class LogService {
 
     private final LogWebHookSaveService logWebHookSave;
 
+    private final LogWebHookReportService logWebHookReport;
+    
     @Autowired
-    public LogService(LogProcessorFactory logProcessorFactory, LogWebHookSaveService logWebHookSave) {
+    public LogService(LogProcessorFactory logProcessorFactory, LogWebHookSaveService logWebHookSave, LogWebHookReportService logWebHookReport) {
         this.logProcessorFactory = logProcessorFactory;
         this.logWebHookSave = logWebHookSave;
+        this.logWebHookReport = logWebHookReport;
     }
 
     public void saveLogWebHook(MultipartFile log) {
@@ -37,5 +42,14 @@ public class LogService {
         List<LogWebHook> logWebHooks = new LogWebHookAdapter().adapt(mapLogWebHooks);
 
         logWebHookSave.save(logWebHooks);
+        
+    }
+    
+    public List<LogWebHookCountReport> getTopUrls(Integer limit) {
+        if (limit != null) {
+            return logWebHookReport.getTopUrls(limit);
+        }
+        
+        return new ArrayList();
     }
 }

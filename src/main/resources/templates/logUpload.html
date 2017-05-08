@@ -16,7 +16,20 @@
             <h2 th:text="${message}"/>
         </div>
 
-        <!-- rever -->
-        <a href="/gellallfiles">Get List Files</a>
+        <hr />
+        
+        <h2>Reports</h2>
+        <h3>Top URLs</h3>
+        <div th:unless="${#lists.isEmpty(urlsReport)}">
+            <dl th:each="row : ${urlsReport}">
+                <dt>
+                    <span th:text="${row.value}">URL</span> - <span
+                        th:text="${row.count}">Count</span>
+                </dt>
+            </dl>
+        </div>
+        <div th:if="${#lists.isEmpty(urlsReport)}">
+            <p>...</p>
+        </div>
     </body>
 </html>

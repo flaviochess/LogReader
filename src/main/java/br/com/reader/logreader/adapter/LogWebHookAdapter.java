@@ -24,7 +24,7 @@ public class LogWebHookAdapter {
     public LogWebHook adapt(Map<String, Object> mapLogWebHook) {
         LogWebHook logWebHook = new LogWebHook();
         logWebHook.setUrl(mapLogWebHook.get("url").toString());
-        logWebHook.setCode(Integer.parseInt(mapLogWebHook.get("code").toString()));
+        logWebHook.setCode(mapLogWebHook.get("code").toString());
 
         return logWebHook;
     }
