@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Log Uploader</title>
+    </head>    
+    <body>
+
+        <div>
+            <form method="POST" enctype="multipart/form-data" action="/">
+                <p>Envie o log para ser analisado:</p>
+                <p><input type="file" name="log" /></p>
+                <p><input type="submit" value="Enviar" /></p>
+            </form>
+        </div>
+
+        <div th:if="${message}">
+            <h2 th:text="${message}"/>
+        </div>
+
+        <!-- rever -->
+        <a href="/gellallfiles">Get List Files</a>
+    </body>
+</html>
