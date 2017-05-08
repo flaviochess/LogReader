@@ -1,4 +1,4 @@
-package br.com.reader.logreader.log;
+package br.com.reader.logreader.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

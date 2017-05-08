@@ -1,5 +1,6 @@
 package br.com.reader.logreader.webhook;
 
+import br.com.reader.logreader.log.WebHook;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Controller;

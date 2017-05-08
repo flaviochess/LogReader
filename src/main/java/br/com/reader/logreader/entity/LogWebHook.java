@@ -1,4 +1,4 @@
-package br.com.reader.logreader.webhook;
+package br.com.reader.logreader.entity;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author Flavio Andrade
  */
 @Entity
-public class WebHook {
+public class LogWebHook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -63,7 +63,7 @@ public class WebHook {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final WebHook other = (WebHook) obj;
+        final LogWebHook other = (LogWebHook) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
