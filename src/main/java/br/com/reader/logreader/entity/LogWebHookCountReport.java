@@ -1,6 +1,7 @@
 package br.com.reader.logreader.entity;
 
 /**
+ * Object for reports of LogWebHook
  *
  * @author Flavio Andrade
  */

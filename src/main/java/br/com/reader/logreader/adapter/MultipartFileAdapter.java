@@ -12,12 +12,19 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * Adapter of MultipartFile
  *
  * @author Flavio Andrade
  */
 @Component
 public class MultipartFileAdapter {
 
+    /**
+     * Adapt lines of MultipartFile in String list
+     *
+     * @param file - MultipartFile
+     * @return lines in String list
+     */
     public List<String> adapt(MultipartFile file) {
         List<String> lines = new ArrayList();
 

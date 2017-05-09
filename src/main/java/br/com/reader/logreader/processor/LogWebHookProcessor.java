@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * Webhook log file processor
  *
  * @author Flavio Andrade
  */
@@ -21,7 +22,7 @@ public class LogWebHookProcessor implements LogProcessor {
 
     private static final String URL_REGEX = "request_to=\"(.*?)\"";
     private static final String CODE_REGEX = "response_status=\"(.*?)\"";
-    
+
     private MultipartFileAdapter fileAdapter;
 
     @Autowired
@@ -29,29 +30,37 @@ public class LogWebHookProcessor implements LogProcessor {
         this.fileAdapter = fileAdapter;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see br.com.reader.logreader.processor.LogProcessor#getType()
+     */
     @Override
     public LogFileEnum getType() {
         return LogFileEnum.WEB_HOOK;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see br.com.reader.logreader.processor.LogProcessor#convert(org.springframework.web.multipart.MultipartFile)
+     */
     @Override
     public List<Map<String, Object>> convert(MultipartFile file) {
 
         List<Map<String, Object>> values = new ArrayList();
-        
+
         List<String> lines = fileAdapter.adapt(file);
 
         Pattern urlPattern = Pattern.compile(URL_REGEX);
         Pattern codePattern = Pattern.compile(CODE_REGEX);
-        
+
         for (String line : lines) {
             Matcher urlMatcher = urlPattern.matcher(line);
             Matcher codeMatcher = codePattern.matcher(line);
-            if(urlMatcher.find() && codeMatcher.find()) {
+            if (urlMatcher.find() && codeMatcher.find()) {
                 Map<String, Object> value = new HashMap();
                 value.put(LogWebHook.URL_FIELD, urlMatcher.group(1));
                 value.put(LogWebHook.CODE_FIELD, codeMatcher.group(1));
-                
+
                 values.add(value);
             }
         }

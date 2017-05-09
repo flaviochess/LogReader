@@ -1,11 +1,11 @@
 package br.com.reader.logreader.processor;
 
-import br.com.reader.logreader.processor.LogFileEnum;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
+ * Processor factory
  *
  * @author Flavio Andrade
  */
@@ -19,6 +19,12 @@ public class LogProcessorFactory {
         this.processors = processors;
     }
 
+    /**
+     * Creates processor by log type
+     *
+     * @param logFile - log type
+     * @return processor of log type
+     */
     public LogProcessor create(LogFileEnum logFile) {
         return processors.stream()
                 .filter(processor -> LogFileEnum.WEB_HOOK.equals(processor.getType()))
