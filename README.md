@@ -17,4 +17,4 @@ Na tela você verá um botão para fazer upload do seu arquivo de log. O arquivo
 As estatísticas sobre o log que são exibidas até o momento são as três URLs da tag request_to mais frequentes e a quantidade de vezes que estas aparecem. Também são exibidos todos os reponse status (código http) que estão presentes na tag response_status e a quantidade de vezes que cada uma aparece.
 
 ## Tecnologias utilizadas
-O projeto é desenvolvido com SpringBoot, SpringData para a manipulação do banco de dados, banco de dados em memória H2 e Thymeleaf para a criação da interface.
+O projeto é desenvolvido com SpringBoot, SpringData para a manipulação do banco de dados, banco de dados em memória H2, Spring MVC e Thymeleaf para a criação da interface.
