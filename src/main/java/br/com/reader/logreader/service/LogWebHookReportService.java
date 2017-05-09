@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * Class responsible for generating LogWebHook reports
  *
  * @author Flavio Andrade
  */
@@ -21,6 +22,12 @@ public class LogWebHookReportService {
         this.repository = repository;
     }
 
+    /**
+     * Returns most requested URLs and the number of requests.
+     *
+     * @param limit - limit of results
+     * @return URLs with more (limit) requests
+     */
     public List<LogWebHookCountReport> getTopUrls(Integer limit) {
 
         List<LogWebHookCountReport> reports = new ArrayList(limit);
@@ -36,7 +43,12 @@ public class LogWebHookReportService {
         return reports;
 
     }
-    
+
+    /**
+     * Returns received codes and the amount of each
+     *
+     * @return Status codes and your amount
+     */
     public List<LogWebHookCountReport> getStatusCodeReport() {
         return repository.findCodeCount();
     }

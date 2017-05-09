@@ -1,6 +1,5 @@
 package br.com.reader.logreader.service;
 
-import br.com.reader.logreader.service.LogWebHookSaveService;
 import br.com.reader.logreader.entity.LogWebHook;
 import br.com.reader.logreader.processor.LogFileEnum;
 import br.com.reader.logreader.processor.LogProcessor;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
+ * Service class responsible for logs
  *
  * @author Flavio Andrade
  */
@@ -26,7 +26,7 @@ public class LogService {
     private final LogWebHookSaveService logWebHookSave;
 
     private final LogWebHookReportService logWebHookReport;
-    
+
     @Autowired
     public LogService(LogProcessorFactory logProcessorFactory, LogWebHookSaveService logWebHookSave, LogWebHookReportService logWebHookReport) {
         this.logProcessorFactory = logProcessorFactory;
@@ -34,6 +34,11 @@ public class LogService {
         this.logWebHookReport = logWebHookReport;
     }
 
+    /**
+     * Saves a MultipartFile in database as a LogWebHook
+     *
+     * @param log - MultipartFile that represents the log
+     */
     public void saveLogWebHook(MultipartFile log) {
 
         LogProcessor logProcessor = logProcessorFactory.create(LogFileEnum.WEB_HOOK);
@@ -42,20 +47,31 @@ public class LogService {
         List<LogWebHook> logWebHooks = new LogWebHookAdapter().adapt(mapLogWebHooks);
 
         logWebHookSave.save(logWebHooks);
-        
+
     }
-    
+
+    /**
+     * Returns most requested URLs and the number of requests.
+     *
+     * @param limit - limit of results
+     * @return URLs with more (limit) requests
+     */
     public List<LogWebHookCountReport> getTopUrls(Integer limit) {
         if (limit != null) {
             return logWebHookReport.getTopUrls(limit);
         }
-        
+
         return new ArrayList();
     }
-    
+
+    /**
+     * Returns received codes and the amount of each
+     *
+     * @return Status codes and your amount
+     */
     public List<LogWebHookCountReport> getStatusCodeReport() {
-        
+
         return logWebHookReport.getStatusCodeReport();
     }
-    
+
 }

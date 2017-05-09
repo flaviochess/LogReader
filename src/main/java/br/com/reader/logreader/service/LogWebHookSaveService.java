@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * Class responsible for save LogWebHook objects
  *
  * @author Flavio Andrade
  */
@@ -20,11 +21,16 @@ public class LogWebHookSaveService {
         this.repository = repository;
     }
 
+    /**
+     * Saves a list of LogWebHook in database
+     *
+     * @param logWebHooks
+     */
     public void save(List<LogWebHook> logWebHooks) {
         for (LogWebHook logWebHook : logWebHooks) {
             System.out.println(logWebHook);
         }
-        
+
         repository.save(logWebHooks);
     }
 
