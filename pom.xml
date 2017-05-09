@@ -45,6 +45,13 @@
             <artifactId>h2</artifactId>
         </dependency>
         
+        <!-- Spring Test - module spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
     
     <build>
